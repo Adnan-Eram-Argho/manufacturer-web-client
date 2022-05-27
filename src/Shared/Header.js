@@ -37,6 +37,11 @@ const Header = () => {
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
+                    <li>
+                        {
+                            user && <p>{user?.displayName}</p>
+                        }
+                    </li>
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/purchase'>Purchase</Link></li>
                     {/* <li tabIndex="0">

@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../firebase.init';
 import Loading from '../Shared/Loading';
 
 const Purchase = () => {
     const [tools, setTools] = useState([]);
+    const [quantity, setQuantity] = useState(0);
+    const [isQuantrue, setIsQuantrue] = useState(true);
     const { id } = useParams();
     //react form
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -28,15 +31,60 @@ const Purchase = () => {
     if (loading) {
         return <Loading></Loading>
     }
+
+    //quantity
+
+    const handleQuantity = (e) => {
+        let quantity = e.target.value;
+
+        if (quantity > tools.quantity) {
+            toast("Please writea number below quantity ")
+            setIsQuantrue(false);
+        } else if (isNaN(quantity)) {
+            toast("please white a number");
+            setIsQuantrue(false);
+        } else if (quantity < tools.minQuantity) {
+            toast("please write a bigger number")
+            setIsQuantrue(false);
+        } else {
+            setIsQuantrue(true);
+            setQuantity(e.target.value)
+        }
+        console.log(e.target.value)
+
+
+    }
     //submit
+
+
     const onSubmit = async (data) => {
+        const userTools = {
+            name: tools.name,
+            shortDescription: tools.description,
+            price: tools.price,
+            Quantity: quantity,
+            paid: false,
+            userName: user?.displayName,
+            email: user?.email,
+            phone: data.phone,
+            address: data.Adress
+        }
+        console.log(userTools);
 
-        console.log(data)
-
+        fetch('http://localhost:5000/userTools', {
+            method: 'POST',
+            body: JSON.stringify(userTools),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
 
 
     };
-    console.log(user)
+
+
     return (
         < div className='container mx-auto'>
             {/* user details */}
@@ -63,7 +111,7 @@ const Purchase = () => {
                         <p class="py-6"> Quantity: {tools.quantity}</p>
                         <p class="py-6"> Minimum Quantity: {tools.minQuantity}</p>
                         <p class="py-6">Sold: {tools.sold}</p>
-                        <button class="btn btn-primary">Get Started</button>
+                        <button class="btn btn-primary">Place order</button>
                     </div>
                 </div>
             </div>
@@ -77,9 +125,13 @@ const Purchase = () => {
                     <input type="text" className="mt-2 rounded p-3" placeholder="Address" {...register("Adress", { required: true })} />
 
                     <input type="text" className="mt-2 rounded p-3" placeholder="Phone" {...register("phone")} required />
+                    <input type="text" onBlur={handleQuantity} className="mt-2 rounded p-3" placeholder="Quantity" />
+                    {
+                        isQuantrue ? <button type="submit"
+                            className="btn mt-2" >Sign Up</button> : <button type="submit"
+                                className="btn mt-2" disabled>Sign Up</button>
+                    }
 
-
-                    <button type="submit" className="btn mt-2" >Sign Up</button>
                 </form>
             </div>
         </div >
