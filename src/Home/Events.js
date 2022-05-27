@@ -5,7 +5,8 @@ const Events = () => {
         <div className='mt-9'>
 
 
-            <div tabindex="0" className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
+            <div tabIndex="0" className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
+
                 <div className="collapse-title text-xl font-medium">
                     <div className='text-center'>
                         <h2 className="text-3xl">Our Latest Events</h2>
