@@ -7,6 +7,7 @@ import SignUp from './Login/SignUp';
 import Purchase from './Purchase/Purchase';
 import Header from './Shared/Header';
 import NotFound from './Shared/NotFound';
+import RequireAuth from './Shared/RequireAuth'
 
 function App() {
   return (
@@ -15,7 +16,14 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='*' element={<NotFound />}></Route>
-        <Route path='/purchase' element={<Purchase />}></Route>
+        <Route path='/purchase/:id' element={
+          <RequireAuth>
+            <Purchase />
+          </RequireAuth>
+        }></Route>
+
+
+
         <Route path='/signin' element={<SignIn />}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}>  </Route>
       </Routes>

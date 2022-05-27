@@ -1,7 +1,16 @@
 import React from 'react';
+import { signOut } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../firebase.init';
 
 const Header = () => {
+    const [user] = useAuthState(auth);
+    const email = user?.email;
+    const url = `myitems/${email}`
+    const handleSignOut = () => {
+        signOut(auth)
+    }
     return (
         <div className="navbar bg-base-100 container mx-auto">
             <div className="navbar-start">
@@ -28,8 +37,9 @@ const Header = () => {
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
-                    <li><a>Item 1</a></li>
-                    <li tabIndex="0">
+                    <li><Link to='/'>Home</Link></li>
+                    <li><Link to='/purchase'>Purchase</Link></li>
+                    {/* <li tabIndex="0">
                         <a>
                             Parent
                             <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
@@ -38,8 +48,12 @@ const Header = () => {
                             <li><a>Submenu 1</a></li>
                             <li><a>Submenu 2</a></li>
                         </ul>
+                    </li> */}
+                    <li>
+                        {
+                            user ? <button className='btn' onClick={handleSignOut}>Sign Out</button> : <Link to="/signup">Sign up</Link>
+                        }
                     </li>
-                    <li><a>Item 3</a></li>
                 </ul>
             </div>
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Tools from './Tools';
 
 const tool = ({ tool }) => {
+
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
@@ -16,7 +16,7 @@ const tool = ({ tool }) => {
                 <p>Sold: {tool.sold}</p>
                 <p>Price: {tool.price}</p>
                 <div className="card-actions">
-                    <button className="btn btn-primary"><Link to='/purchase'>Buy now</Link></button>
+                    <button className="btn btn-primary"><Link to={`/purchase/${tool?._id}`}>Buy now</Link></button>
                 </div>
             </div>
         </div>
