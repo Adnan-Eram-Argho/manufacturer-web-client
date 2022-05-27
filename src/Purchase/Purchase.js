@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../firebase.init';
 import Loading from '../Shared/Loading';
 
 const Purchase = () => {
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location?.state?.from?.pathname || "/";
     const [tools, setTools] = useState([]);
     const [quantity, setQuantity] = useState(0);
     const [isQuantrue, setIsQuantrue] = useState(true);
@@ -60,6 +63,7 @@ const Purchase = () => {
     const onSubmit = async (data) => {
         const userTools = {
             name: tools.name,
+            image: tools.image,
             shortDescription: tools.description,
             price: tools.price,
             Quantity: quantity,
@@ -81,7 +85,7 @@ const Purchase = () => {
             .then((response) => response.json())
             .then((json) => console.log(json));
 
-
+        navigate(from, { replace: true })
     };
 
 

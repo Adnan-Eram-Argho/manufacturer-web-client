@@ -2,6 +2,9 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
+import DashBoard from './Dashbooard/DashBoard';
+import Orders from './Dashbooard/Orders';
+import Review from './Dashbooard/Review';
 import Home from './Home/Home';
 import SignIn from './Login/SignIn';
 import SignUp from './Login/SignUp';
@@ -23,6 +26,11 @@ function App() {
           </RequireAuth>
         }></Route>
 
+
+        <Route path='/dashboard/:email' element={<RequireAuth><DashBoard /></RequireAuth>}>
+          <Route index element={<Orders></Orders>}></Route>
+
+        </Route>
 
 
         <Route path='/signin' element={<SignIn />}></Route>
