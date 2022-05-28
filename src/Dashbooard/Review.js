@@ -2,7 +2,11 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
+import { useLocation, useNavigate } from 'react-router-dom';
 const Review = () => {
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location?.state?.from?.pathname || "/";
     const [user] = useAuthState(auth)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -23,6 +27,7 @@ const Review = () => {
         })
             .then((response) => response.json())
             .then((json) => console.log(json));
+        navigate(from, { replace: true })
     };
     console.log(errors);
     return (
