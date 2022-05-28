@@ -10,6 +10,7 @@ import SignIn from './Login/SignIn';
 import SignUp from './Login/SignUp';
 import Portfolio from './Portfolio/Portfolio';
 import Purchase from './Purchase/Purchase';
+import Blogs from './Shared/Blogs';
 import Footer from './Shared/Footer';
 import Header from './Shared/Header';
 import NotFound from './Shared/NotFound';
@@ -39,6 +40,7 @@ function App() {
         <Route path='/portfolio' element={<Portfolio />}></Route>
         <Route path='/signin' element={<SignIn />}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}>  </Route>
+        <Route path='/blog' element={<Blogs />}></Route>
       </Routes>
       <ToastContainer />
       <Footer></Footer>

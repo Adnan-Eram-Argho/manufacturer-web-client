@@ -30,6 +30,7 @@ const Header = () => {
                         }
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/portfolio'>Portfolio</Link></li>
+                        <li><Link to='/blog'>Blogs</Link></li>
 
                         <li>
                             {
@@ -52,7 +53,7 @@ const Header = () => {
                     }
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/portfolio'>Portfolio</Link></li>
-
+                    <li><Link to='/blog'>Blogs</Link></li>
                     <li>
                         {
                             user ? <button className='btn' onClick={handleSignOut}>Sign Out</button> : <Link to="/signup">Sign up</Link>

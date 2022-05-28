@@ -33,7 +33,7 @@ const Portfolio = () => {
                     <li>jquary</li>
                 </ol>
             </div>
-            <div className='text-center mt-5'>
+            <div className='text-center mt-5 flex flex-col'>
                 <h2 className="text-3xl mx-auto ">Link to some of my projects</h2>
                 <a href="https://photographers-world-4c2dc.web.app/" className='m-5 p-5 text-cyan-200'>Photographers world</a>
                 <a href="https://warehouse-management-486e0.web.app/" className='m-5 p-5 text-cyan-200'>WareHouse projects</a>
