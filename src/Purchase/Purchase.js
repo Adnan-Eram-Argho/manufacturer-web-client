@@ -61,13 +61,14 @@ const Purchase = () => {
 
 
     const onSubmit = async (data) => {
+        console.log(data)
         const userTools = {
             name: tools.name,
             image: tools.image,
             shortDescription: tools.description,
             price: tools.price,
             Quantity: quantity,
-            paid: false,
+            paid: data.Paid,
             userName: user?.displayName,
             email: user?.email,
             phone: data.phone,
@@ -130,10 +131,13 @@ const Purchase = () => {
 
                     <input type="text" className="mt-2 rounded p-3" placeholder="Phone" {...register("phone")} required />
                     <input type="text" onBlur={handleQuantity} className="mt-2 rounded p-3" placeholder="Quantity" />
+                    <label>if you want to pay now then click the checkbox bellow</label>
+                    <input type="checkbox" placeholder="Paid" {...register("Paid")} />
+
                     {
                         isQuantrue ? <button type="submit"
-                            className="btn mt-2" >Sign Up</button> : <button type="submit"
-                                className="btn mt-2" disabled>Sign Up</button>
+                            className="btn mt-2">PlaceOrder</button> : <button type="submit"
+                                className="btn mt-2" disabled>PlaceOrder</button>
                     }
 
                 </form>

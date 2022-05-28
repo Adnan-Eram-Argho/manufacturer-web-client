@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
-
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../firebase.init'
 const DashBoard = () => {
     const { email } = useParams();
+    const [user] = useAuthState(auth);
+
     return (
         <div>
             <div class="drawer drawer-mobile">
@@ -17,8 +20,9 @@ const DashBoard = () => {
                     <label for="my-drawer-2" class="drawer-overlay"></label>
                     <ul class="menu p-4  w-40 bg-base-900 text-base-content">
 
-                        <li><Link to={`/dashboard/${email}`}>My Orders</Link></li>
-                        {/* <li><Link to={`/dashboard/review/${email}`}>review</Link></li> */}
+                        <li><Link to={`/dashboard`}>My Orders</Link></li>
+                        <li><Link to={`/dashboard/profile`}>My Profile</Link></li>
+                        <li><Link to={`/dashboard/review`}>review</Link></li>
                     </ul>
 
                 </div>

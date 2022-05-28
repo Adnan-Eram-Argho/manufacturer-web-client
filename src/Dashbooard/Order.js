@@ -1,15 +1,33 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const order = ({ tools }) => {
     console.log(tools?.image)
+    const url = `http://localhost:5000/usertools/${tools._id}`
+    const handleDelete = () => {
+        let cancel = window.confirm("are you sure you wanna delete this?");
+        if (cancel) {
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        console.log('deleted');
+                        window.location.reload(true);
+                    }
+                })
+        } else {
+            toast('no items deleted')
+        }
+
+
+    }
     return (
         <div>
-
-            <div class="card w-96 bg-base-100 mt-9 shadow-xl mx-auto ">
+            <div class="card card-compact w-96 bg-base-100 shadow-xl mx-auto">
                 <figure><img src={tools.image} alt="Shoes" /></figure>
                 <div class="card-body">
-                    {/* <h2 class="card-title">Shoes!</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p> */}
                     <h1 class="card-title">{tools.name}</h1>
                     <p > User Name: {tools.userName}</p>
                     <p > User Email: {tools.email}</p>
@@ -19,12 +37,19 @@ const order = ({ tools }) => {
                     <p > Price: {tools.price}</p>
                     <p > Quantity: {tools.Quantity}</p>
                     <p > paid: {tools.paid ? "paid" : "not paid"}</p>
-
                     <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Buy Now</button>
+
+                        {
+                            tools.paid ? "" : <button class="btn btn-primary">Buy Now</button>
+                        }
+
+                        {
+                            tools.paid ? "" : <button class="btn btn-primary" onClick={handleDelete}>cancel</button>
+                        }
                     </div>
                 </div>
             </div>
+
 
 
             {/* <div class="hero min-h-screen bg-base-200">
