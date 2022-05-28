@@ -8,6 +8,7 @@ import Review from './Dashbooard/Review';
 import Home from './Home/Home';
 import SignIn from './Login/SignIn';
 import SignUp from './Login/SignUp';
+import Portfolio from './Portfolio/Portfolio';
 import Purchase from './Purchase/Purchase';
 import Footer from './Shared/Footer';
 import Header from './Shared/Header';
@@ -35,7 +36,7 @@ function App() {
           <Route path='profile' element={<MyProfile />}></Route>
         </Route>
 
-
+        <Route path='/portfolio' element={<Portfolio />}></Route>
         <Route path='/signin' element={<SignIn />}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}>  </Route>
       </Routes>

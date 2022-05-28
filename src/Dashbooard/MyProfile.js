@@ -37,7 +37,7 @@ const MyProfile = () => {
             .then((response) => response.json())
             .then((json) => console.log(json));
         toast('done')
-        // window.location.reload(true);
+        window.location.reload(true);
     };
 
 
