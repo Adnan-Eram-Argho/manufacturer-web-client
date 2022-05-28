@@ -116,7 +116,7 @@ const Purchase = () => {
                         <p class="py-6"> Quantity: {tools.quantity}</p>
                         <p class="py-6"> Minimum Quantity: {tools.minQuantity}</p>
                         <p class="py-6">Sold: {tools.sold}</p>
-                        <button class="btn btn-primary">Place order</button>
+
                     </div>
                 </div>
             </div>

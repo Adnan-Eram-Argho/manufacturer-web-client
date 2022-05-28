@@ -25,7 +25,7 @@ const order = ({ tools }) => {
     }
     return (
         <div>
-            <div class="card card-compact w-96 bg-base-100 shadow-xl mx-auto">
+            <div class="card card-compact  bg-base-100 shadow-xl mx-auto">
                 <figure><img src={tools.image} alt="Shoes" /></figure>
                 <div class="card-body">
                     <h1 class="card-title">{tools.name}</h1>
