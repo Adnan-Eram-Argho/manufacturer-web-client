@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init'
+import Footer from '../Shared/Footer';
 const DashBoard = () => {
     const { email } = useParams();
     const [user] = useAuthState(auth);
@@ -29,6 +30,7 @@ const DashBoard = () => {
             </div>
 
         </div>
+
     );
 };
 

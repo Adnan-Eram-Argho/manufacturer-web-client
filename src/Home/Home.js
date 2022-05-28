@@ -21,7 +21,7 @@ const Home = () => {
             <Reviews />
             <Events />
             <LearnPainting />
-            <Footer />
+
 
         </div>
     );

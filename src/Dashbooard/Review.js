@@ -18,7 +18,7 @@ const Review = () => {
         }
         console.log(reviewData)
         console.log(data)
-        fetch('http://localhost:5000/review', {
+        fetch('https://immense-caverns-52550.herokuapp.com/review', {
             method: 'POST',
             body: JSON.stringify(reviewData),
             headers: {

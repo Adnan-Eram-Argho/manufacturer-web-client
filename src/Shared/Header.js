@@ -6,7 +6,7 @@ import auth from '../firebase.init';
 
 const Header = () => {
     const [user] = useAuthState(auth);
-    const email = user?.email;
+
 
     const handleSignOut = () => {
         signOut(auth)
@@ -26,7 +26,7 @@ const Header = () => {
                             }
                         </li>
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/purchase'>Purchase</Link></li>
+
 
                         <li>
                             {

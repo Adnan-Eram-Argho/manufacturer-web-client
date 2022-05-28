@@ -19,7 +19,7 @@ const Purchase = () => {
     //getting item
 
 
-    const url = `http://localhost:5000/tools/${id}`
+    const url = `https://immense-caverns-52550.herokuapp.com/tools/${id}`
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -76,7 +76,7 @@ const Purchase = () => {
         }
         console.log(userTools);
 
-        fetch('http://localhost:5000/userTools', {
+        fetch('https://immense-caverns-52550.herokuapp.com/userTools', {
             method: 'POST',
             body: JSON.stringify(userTools),
             headers: {

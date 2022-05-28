@@ -7,7 +7,7 @@ const Orders = () => {
     const [userTools, setUserTools] = useState([])
 
     const [user] = useAuthState(auth)
-    const url = `http://localhost:5000/usertools/${user.email}`;
+    const url = `https://immense-caverns-52550.herokuapp.com/usertools/${user.email}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
